@@ -10,11 +10,13 @@ public class Curso {
 
     @NotEmpty(message = "{campo.obrigatorio}")
     private String codigo;
+
     @Size(min = 2, max = 100, message = "{campo.invalido.tamanho}")
     private String nome;
 
     @PastOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataInicio;
+
     @PastOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataTermino;
 
