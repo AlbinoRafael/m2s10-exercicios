@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cadastro-cursos-jsf-demo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cadastro-cursos-jsf-demo</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cadastro-cursos-jsf-demo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="cadastro-cursos-jsf-demo:war exploded" />
+    </root>
+  </artifact>
+</component>
