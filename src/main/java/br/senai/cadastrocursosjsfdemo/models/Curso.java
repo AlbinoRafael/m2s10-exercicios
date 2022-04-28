@@ -1,21 +1,29 @@
 package br.senai.cadastrocursosjsfdemo.models;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Curso {
 
+    @NotEmpty(message = "{campo.obrigatorio}")
     private String codigo;
+    @Size(min = 2, max = 100, message = "{campo.invalido.tamanho}")
+    private String nome;
 
+    @PastOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataInicio;
-
+    @PastOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataTermino;
 
     public Curso() {
     }
 
-    public Curso(String codigo, LocalDate dataInicio, LocalDate dataTermino) {
+    public Curso(String codigo, String nome, LocalDate dataInicio, LocalDate dataTermino) {
         this.codigo = codigo;
+        this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
     }
@@ -26,6 +34,14 @@ public class Curso {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public LocalDate getDataInicio() {
@@ -61,6 +77,7 @@ public class Curso {
     public String toString() {
         return "Curso{" +
                 "codigo='" + codigo + '\'' +
+                ", nome='" + nome + '\'' +
                 ", dataInicio=" + dataInicio +
                 ", dataTermino=" + dataTermino +
                 '}';
