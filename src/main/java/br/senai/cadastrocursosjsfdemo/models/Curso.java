@@ -1,5 +1,6 @@
 package br.senai.cadastrocursosjsfdemo.models;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
@@ -17,7 +18,7 @@ public class Curso {
     @PastOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataInicio;
 
-    @PastOrPresent(message = "{campo.invalido.data}")
+    @FutureOrPresent(message = "{campo.invalido.data}")
     private LocalDate dataTermino;
 
     public Curso() {

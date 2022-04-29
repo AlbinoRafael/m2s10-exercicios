@@ -118,7 +118,7 @@ body {
     color: var(--text-color-primary);
 }
 
-.tab-livros, tab-leitores {
+.tab-cursos {
     text-align: center;
     font-size: 1.2rem;
 }
@@ -136,7 +136,7 @@ body {
     margin: 2px 4px;
 }
 
-.btn-link-livro, .btn-link-leitor {
+.btn-link-livro, .btn-link-curso {
     margin: 20px 0px;
 }
 

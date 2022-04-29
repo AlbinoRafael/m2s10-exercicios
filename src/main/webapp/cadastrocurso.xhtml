@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="conteudo">
+
+        <span class="titulo-pagina">Formulário de Cadastro de Curso</span>
+
+        <h:form id="form-cadastro-curso" styleClass="form-curso-container">
+
+            <p:panelGrid id="panel-cadastro-curso" columns="2" styleClass="input-container">
+
+                <p:outputLabel value="Código" for="input-codigo" />
+                <h:panelGroup styleClass="input-campo-e-erro">
+                    <p:inputText value="#{cursoWebBean.curso.codigo}" id="input-codigo" disabled="#{cursoWebBean.curso.codigo != null}"
+                                 validator="#{cursoWebBean.validarCodigoDuplicado}"/>
+                    <p:message for="input-codigo" style="font-size: 0.8rem" />
+                </h:panelGroup>
+
+                <h:outputLabel value="Nome" for="input-nome" />
+                <h:panelGroup styleClass="input-campo-e-erro">
+                    <p:inputText value="#{cursoWebBean.curso.nome}" id="input-nome" maxlength="100" />
+                    <p:message for="input-nome" style="font-size: 0.8rem" />
+                </h:panelGroup>
+
+                <p:outputLabel value="Data de início" for="input-data-inicio" />
+                <h:panelGroup styleClass="input-campo-e-erro">
+                    <p:datePicker value="#{cursoWebBean.curso.dataInicio}" id="input-data-inicio" pattern="dd/MM/yyyy" />
+                    <p:message for="input-data-inicio" style="font-size: 0.8rem" />
+                </h:panelGroup>
+
+                <p:outputLabel value="Data de término" for="input-data-termino" />
+                <h:panelGroup styleClass="input-campo-e-erro">
+                    <p:datePicker value="#{cursoWebBean.curso.dataTermino}" id="input-data-termino" pattern="dd/MM/yyyy" />
+                    <p:message for="input-data-termino" style="font-size: 0.8rem" />
+                </h:panelGroup>
+            </p:panelGrid>
+
+            <h:panelGroup styleClass="botao-container">
+                <p:commandButton style="margin: 20px"
+                                 value="#{cursoWebBean.curso.codigo == null ? 'Cadastrar' : 'Atualizar'}"
+                                 action="#{cursoWebBean.salvar}"
+                                 update="panel-cadastro-curso" />
+            </h:panelGroup>
+
+        </h:form>
+
+        <p:link value="Voltar" outcome="principal" />
+
+    </ui:define>
+</ui:composition>
