@@ -3,6 +3,8 @@ package br.senai.cadastrocursosjsfdemo.repository;
 import br.senai.cadastrocursosjsfdemo.models.Curso;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,12 @@ public class CursoRepository {
 
     private List<Curso> cursos = new ArrayList<>();
 
-    public List<Curso> obter() {
+    public CursoRepository(){
+        cursos.add(new Curso("C01", "Curso de Java", LocalDate.of(2023, Month.JANUARY,1), LocalDate.of(2023, Month.FEBRUARY,1)));
+        cursos.add(new Curso("C02", "Curso de JSF", LocalDate.of(2023, Month.FEBRUARY,1), LocalDate.of(2023, Month.MARCH,1)));
+        cursos.add(new Curso("C03", "Curso de Primefaces", LocalDate.of(2023, Month.MARCH,1), LocalDate.of(2023, Month.APRIL,1)));
+    }
+    public List<Curso> obterCursos() {
         return cursos;
     }
 
@@ -33,5 +40,8 @@ public class CursoRepository {
                 }
             }
         }
+    }
+    public boolean existe(String codigo) {
+        return cursos.stream().anyMatch(l -> l.getCodigo().equals(codigo));
     }
 }
